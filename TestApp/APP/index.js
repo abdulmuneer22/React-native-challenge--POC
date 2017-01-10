@@ -6,13 +6,15 @@ import {
 import { Provider } from 'react-redux'
 import { createStore , combineReducers } from 'redux'
 import Reducers from './Reducers'
+
+//Navigator Component
+import Navigation from './Navigation'
+
 class APP extends Component{
     render(){
         return(
             <Provider store={createStore(Reducers)}>
-            <View>
-            <Text>Home</Text>
-            </View>
+            <Navigation />
             </Provider>
         )
     }
