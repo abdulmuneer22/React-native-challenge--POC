@@ -1,5 +1,18 @@
 import { Actions } from 'react-native-router-flux'
 
+
+export const openDrawer = (status) =>{
+
+  return{
+    type : 'openDrawer',
+    payload : status
+  }
+}
+
+
+
+
+
 export const UserName = (text) => {
     // console.log("called User input action" + text)
     return {
