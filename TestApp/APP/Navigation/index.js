@@ -13,6 +13,8 @@ import DrawerContent from '../Containers/DrawerContent'
 import SplashScreen from '../Containers/SplashScreen'
 import Home from '../Containers/Home'
 import Feed from '../Containers/Feed'
+import Item from '../Containers/Item'
+
 
 
 
@@ -47,6 +49,8 @@ class Navigation extends Component{
                     <Scene  initial key='init' component={SplashScreen} hideNavBar/>
                     <Scene   key='home' component={Home} hideNavBar/>
                     <Scene   key='feed' component={Feed} hideNavBar/>
+                    <Scene   key='item' component={Item} hideNavBar/>
+                    
                 </Router>
 
             </Drawer>

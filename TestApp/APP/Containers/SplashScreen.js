@@ -8,13 +8,16 @@ import {
 } from 'react-native'
 
 //firebase
+const USER_NAME = 'muneer@test.com'
+const PWD = '123456789'
 import firebase from 'firebase'
-const firebaseConfig = {
-  apiKey: "AIzaSyDA2O-uRbNipOS3iKo5qRAg3Xd46u67Bg0",
-  authDomain: "samplesserver.firebaseapp.com",
-  databaseURL: "https://samplesserver.firebaseio.com",
-  storageBucket: "samplesserver.appspot.com"
-};
+var config = {
+    apiKey: "AIzaSyC17PGU_zuF0KKeqXM0Zp4gG2mUAq-JaQ0",
+    authDomain: "reduxcourse-60d5e.firebaseapp.com",
+    databaseURL: "https://reduxcourse-60d5e.firebaseio.com",
+    storageBucket: "reduxcourse-60d5e.appspot.com",
+    messagingSenderId: "268289913704"
+  };
 
 import { Actions } from 'react-native-router-flux'
 var loadingimage = require('../Themes/assets/loading.gif')
@@ -22,9 +25,17 @@ const window = Dimensions.get('window')
 class SplashScreen extends Component{
 
   componentDidMount(){
-    firebase.initializeApp(firebaseConfig)
+    firebase.initializeApp(config)
     setTimeout(function(){ 
-      Actions.home()
+      firebase.auth().signInWithEmailAndPassword(USER_NAME,PWD)
+      .then((response)=> {
+        console.log(response)
+        Actions.home()
+        
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
     
   }, 3000);
   }

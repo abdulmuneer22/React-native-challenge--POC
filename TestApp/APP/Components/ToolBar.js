@@ -9,17 +9,35 @@ import {
 
 import { connect } from 'react-redux'
 import * as actions from '../Actions'
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {Actions as Navigate} from 'react-native-router-flux'
 
 class ToolBar extends Component{
     render(){
         // console.log(this.props)
 
         return(
-            <View style={Style.wrapper}>
-                <View>
-                <Text onPress={()=> {this.props.openDrawer(true)}}>Open !!</Text>
+            <View style={[Style.wrapper,{backgroundColor : this.props.bg}]}>
+                <View style={Style.Icon}>
+                    <TouchableOpacity 
+                    onPress={()=> {
+                        if(this.props.icon === 'bars'){
+                        this.props.openDrawer(true)
+                        }else{
+                            Navigate.pop()
+                        }
+                    }}
+                    >
+                    <Icon name={this.props.icon} size={28} color="black" />
+                    </TouchableOpacity>
                 </View>
-                <View></View>
+                
+                <View style={Style.titleWrapper}>
+                <Text style={Style.title}>{this.props.title}</Text>
+                </View>
+
+                <View style={Style.Icon}>
+                </View>
 
                 
             </View>
@@ -29,10 +47,25 @@ class ToolBar extends Component{
 
 const Style = StyleSheet.create({
     wrapper : {
-        marginTop : 25,
+        marginTop : 20,
         height : 50,
-        backgroundColor : 'red',
         flexDirection : 'row'
+    },
+    Icon : {
+        alignItems : 'center',
+        justifyContent : 'center',
+        // backgroundColor : 'red',
+        flex : 1
+    },
+    titleWrapper : {
+        alignItems : 'center',
+        justifyContent : 'center',
+        // backgroundColor : 'yellow',
+        flex : 6
+    },
+    title : {
+        fontSize : 24,
+        fontWeight : '400'
     }
 });
 
